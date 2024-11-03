@@ -14,6 +14,9 @@ class NoBreakingProjectiles : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoBreakingProjectiles plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("projectilesCanBreakBlocks", "true")
+            logger.info("NoBreakingProjectiles plugin has been disabled.")
+        }
     }
 }
